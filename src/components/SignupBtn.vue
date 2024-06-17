@@ -7,7 +7,7 @@
       <v-card-actions>
         <v-icon class="mdi mdi-close text-white" @click="isActive.value = false"></v-icon>
       </v-card-actions>
-      <v-card title="Welcome To Prathibhatheeram!" class="text-center">
+      <v-card title="Registration for teachers" class="text-center">
         <v-card-text>
           <form @submit.prevent="register">
             <div class="my-3">
