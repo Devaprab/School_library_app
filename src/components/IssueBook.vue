@@ -18,9 +18,10 @@
         <i class="fa fa-search" aria-hidden="true"></i> 
       </div>
       <div class="additional-inputs ms-5">
-        <th style="background: #646c4c; color: white;" class="px-3 py-3">Teachers ID</th> <input type="text" placeholder="Teachers Id" v-model="teacherid">
+        <th style="background: #646c4c; color: white;" class="px-3 py-3">Teachers ID</th> 
+        <input type="text" placeholder="Enter your Teachers Id" v-model="teacherid">
         <th style="background: #646c4c; color: white;" class="px-3 py-3">Issued Book ID</th>
-        <input type="text" placeholder="Book Id" v-model="bookid">
+        <input type="text" placeholder="Enter your Book Id" v-model="bookid">
         <button @click="issueBook" style="background-color: #4397a0;">Issue Book</button>
       </div>
       <v-skeleton-loader
