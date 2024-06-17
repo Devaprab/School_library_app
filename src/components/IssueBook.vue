@@ -18,20 +18,19 @@
         <i class="fa fa-search" aria-hidden="true"></i> 
       </div>
       <div class="additional-inputs ms-5">
-        <th>Teachers ID</th> <input type="text" placeholder="Teachers Id" v-model="teacherid">
-        <th>Issued Book ID</th>
-        <input type="text" placeholder="Issued Book Id" v-model="bookid">
+        <th style="background: #646c4c; color: white;" class="px-3 py-3">Teachers ID</th> <input type="text" placeholder="Teachers Id" v-model="teacherid">
+        <th style="background: #646c4c; color: white;" class="px-3 py-3">Issued Book ID</th>
+        <input type="text" placeholder="Book Id" v-model="bookid">
         <button @click="issueBook" style="background-color: #4397a0;">Issue Book</button>
       </div>
       <v-skeleton-loader
           v-if="loading"
           type="table-tbody"
         ></v-skeleton-loader>
-      <table v-else class="ms-5 mt-5">
-        <thead>
-          <tr>
-          <th>SlNo.</th>
-            <!-- <th>ID</th> -->
+        <v-table v-else class="table ms-5 mt-5 pe-5" height="450px" fixed-header>
+      <thead>
+        <tr class="bg-dark">
+            <th>SlNo.</th>
             <th>Name</th>
             <th>Class</th>
             <th>Subject</th>
@@ -39,13 +38,40 @@
             <th>IssuedDate</th>
             <th>ReturnDate</th>
             <th>Action</th>
-            <!-- <th>Edit/Delete</th> -->
+        </tr>
+      </thead>
+      <tbody>
+          <tr v-for="(teacher, index) in filteredTeachers" :key="index">
+            <td>{{ index+1 }} {{ teacher.userId }}</td>
+            <!-- <td>{{ teacher.id }}</td> -->
+            <td><input type="text" v-model="teacher.teacherName" :disabled="!teacher.editMode" /></td>
+          <td><input type="text" v-model="teacher.class" :disabled="!teacher.editMode" /></td>
+          <td><input type="text" v-model="teacher.subject" :disabled="!teacher.editMode" /></td>
+          <td><input type="text" v-model="teacher.bookName" :disabled="!teacher.editMode" /></td>
+          <td><input type="text" v-model="teacher.issueDate" :disabled="!teacher.editMode" /></td>
+          <td><input type="text" v-model="teacher.returnDate" :disabled="!teacher.editMode" /></td>
+          <td>
+            <button class="btn" style="background-color: #4397a0; color:white" @click="returnBook(index)">Return</button>
+          </td>
+          </tr>
+        </tbody>
+    </v-table>
+      <!-- <table  class="ms-5 mt-5">
+        <thead>
+          <tr>
+          <th>SlNo.</th>
+            <th>Name</th>
+            <th>Class</th>
+            <th>Subject</th>
+            <th>BookName</th>
+            <th>IssuedDate</th>
+            <th>ReturnDate</th>
+            <th>Action</th>
           </tr>
         </thead>
         <tbody>
           <tr v-for="(teacher, index) in filteredTeachers" :key="index">
             <td>{{ index+1 }} {{ teacher.userId }}</td>
-            <!-- <td>{{ teacher.id }}</td> -->
             <td>
               <input type="text" v-model="teacher.teacherName" :disabled="!teacher.editMode">
             </td>
@@ -67,15 +93,9 @@
             <td>
               <button class="btn" style="background-color: #4397a0; color:white" @click="returnBook(index)">Return</button>
             </td>
-            <!-- <td>
-              <button v-if="!teacher.editMode" @click="toggleEditMode(index)">Edit/</button>
-              <button v-else @click="submitEdit(index)">Submit</button>
-              <button @click="deleteTeacher(index)">Delete</button>
-
-            </td> -->
           </tr>
         </tbody>
-      </table>
+      </table> -->
     <!-- </v-container>
     </v-main> -->
 </template>
@@ -223,7 +243,7 @@ catch(error){
 
 <style scoped>
   /* Your existing CSS styles */
-  table {
+  /* table {
     width: 96%;
     border-collapse: collapse;
   }
@@ -239,30 +259,28 @@ catch(error){
   
   tbody tr:nth-child(even) {
     background-color: #f2f2f2;
-  }
+  } */
   
-  table input[type="text"] {
-    border: none; /* Remove the border */
-    outline: none; /* Remove the outline box */
-    width: 100%; /* Expand the input field to fill the available space */
-    padding: 4px; /* Add some padding to the input field */
-    box-sizing: border-box; /* Include padding and border in the element's total width and height */
-  }
+  /* table input[type="text"] {
+    border: none; 
+    outline: none; 
+    width: 100%; 
+    padding: 4px; 
+    box-sizing: border-box; 
+  } */
   
-  .thr {
+  /* .thr {
     text-align: center;
     margin-top: 10px;
     margin-bottom: 2px;
     padding: 8px;
   }
   
-  /* Remove the box around buttons */
   table button {
     border: none;
-    /* background: none; */
     cursor: pointer;
     padding: 10;
-  }
+  } */
   .navbar {
     background-color: #f4c807;
     color: #150101;
@@ -360,5 +378,39 @@ catch(error){
 
 .additional-inputs button:hover {
   background-color: #0056b3; /* Change button background color on hover */
+}
+
+.v-table.v-table--fixed-header > .v-table__wrapper > table > thead > tr > th {
+  background: #646c4c;
+  color: white;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+.table th,
+.table td {
+  border: 1px solid #ddd; /* Border style and color */
+  padding: 8px;
+}
+
+.table th {
+  background-color: #f2f2f2;
+}
+
+table input[type="text"] {
+  border: none; 
+  outline: none; 
+  width: 100%; 
+  padding: 4px; 
+  box-sizing: border-box; 
+}
+
+.v-table.v-table--fixed-header > .v-table__wrapper > table > thead > tr > th {
+  background: #646c4c;
+  color: white;
 }
   </style>

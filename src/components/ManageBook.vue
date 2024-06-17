@@ -19,7 +19,7 @@
           v-if="loading"
           type="table-tbody"
         ></v-skeleton-loader>
-    <v-table v-else class="table" height="300px" fixed-header>
+    <v-table v-else class="table" height="450px" fixed-header>
       <thead>
         <tr class="bg-dark">
           <th>BookId</th>
