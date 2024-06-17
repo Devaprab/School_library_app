@@ -21,7 +21,7 @@
     >
       <v-img
         :aspect-ratio="1/1.5"
-        :src="bookList.image"
+        :src="'data:image/jpeg;base64,' + bookList.image"
         cover
       ></v-img>
   

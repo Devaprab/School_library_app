@@ -28,7 +28,7 @@
 
           <div class="text-center text-lg-start mt-4 pt-2">
             <v-btn type="submit"
-              style=" background-color: #007bff; color: white;" :loading="loading" :disabled="loading">Login</v-btn>
+              style=" background-color: #007bff; color: white;" >Login</v-btn>
             <p class="small fw-bold mt-2 pt-1 mb-0">Don't have an account? <router-link to="/adminregister"
               >Register</router-link></p>
           </div>
@@ -43,7 +43,7 @@
 </template>
 
 <script>
-import axios from 'axios';
+// import axios from 'axios';
 export default {
   data() {
     return {
@@ -54,29 +54,29 @@ export default {
       color: '#E8F5E9',
       timeout: 3000,
       message: '',
-      loading: false,
+      // loading: false,
     }
   },
   methods: {
     async login() {
       console.log('clicked');
-      try {
-        this.loading = true;
-        const response = await axios.post(`${this.$store.getters.getUrl}/admin/AdminLogin`, {
-          "email": this.email,
-          "password": this.pswd,
-        });
-        if (response.status >= 200 || response.status < 300) {
-          this.loading = false;
+      // try {
+      //   this.loading = true;
+      //   const response = await axios.post(`${this.$store.getters.getUrl}/admin/AdminLogin`, {
+      //     "email": this.email,
+      //     "password": this.pswd,
+      //   });
+      //   if (response.status >= 200 || response.status < 300) {
+      //     this.loading = false;
           this.$router.push('/adminpage')
-        }
-      } catch (error) {
-        this.loading = false;
-        this.message = error.response? error.response.data : error.message + '!!';
-        this.color = 'red';
-          this.snackbar = true;
-          console.error(error)
-    }
+    //     }
+    //   } catch (error) {
+    //     this.loading = false;
+    //     this.message = error.response? error.response.data : error.message + '!!';
+    //     this.color = 'red';
+    //       this.snackbar = true;
+    //       console.error(error)
+    // }
   }
   }
 }
