@@ -17,18 +17,20 @@
         <input type="text" v-model="searchText" placeholder="Search by Name, Class, or Subject">
         <i class="fa fa-search" aria-hidden="true"></i> 
       </div>
-      <div class="additional-inputs ms-5">
-        <th style="background: #646c4c; color: white;" class="px-3 py-3">Teachers ID</th> 
-        <input type="text" placeholder="Enter your Teachers Id" v-model="teacherid">
-        <th style="background: #646c4c; color: white;" class="px-3 py-3">Issued Book ID</th>
-        <input type="text" placeholder="Enter your Book Id" v-model="bookid">
-        <button @click="issueBook" style="background-color: #4397a0;">Issue Book</button>
+      <div class="d-flex gap-2 ms-5 mt-3 align-items-center">
+        <v-text-field variant="outlined" label="Enter Teacher ID" v-model="teacherid" hide-details density="comfortable"></v-text-field>
+        <v-text-field variant="outlined" label="Enter Book ID" v-model="bookid" hide-details density="comfortable"></v-text-field>
+        <!-- <label style="background: #646c4c; color: white;" class="p-1 px-2">Teacher ID</label> 
+        <input type="text" placeholder="Enter your Teacher Id" v-model="teacherid"> -->
+        <!-- <label style="background: #646c4c; color: white;" class="p-1 px-2">Book ID</label>
+        <input type="text" placeholder="Enter your Book Id" v-model="bookid"> -->
+        <v-btn @click="issueBook" style="background-color: #4397a0; color:white">Issue Book</v-btn>
       </div>
       <v-skeleton-loader
           v-if="loading"
           type="table-tbody"
         ></v-skeleton-loader>
-        <v-table v-else class="table ms-5 mt-5 pe-5" height="450px" fixed-header>
+        <v-table v-else class="table ms-5 mt-3 pe-5" height="450px" fixed-header>
       <thead>
         <tr class="bg-dark">
             <th>SlNo.</th>
@@ -368,14 +370,14 @@ catch(error){
   box-sizing: border-box; /* Include padding and border in the element's total width and height */
 }
 
-.additional-inputs button {
-  padding: 8px 16px; /* Add padding */
-  background-color: #007bff; /* Change button background color */
-  color: #fff; /* Change button text color */
-  border: none; /* Remove border */
-  border-radius: 4px; /* Add border radius */
+/* .additional-inputs button {
+  padding: 8px 16px; 
+  background-color: #007bff; 
+  color: #fff; 
+  border: none; 
+  border-radius: 4px; 
   cursor: pointer;
-}
+} */
 
 .additional-inputs button:hover {
   background-color: #0056b3; /* Change button background color on hover */

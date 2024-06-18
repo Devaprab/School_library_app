@@ -1,6 +1,5 @@
 <template>
-  <v-main>
-    <v-container justify-center>
+
     <div class="d-flex flex-column">
         <!-- <v-chip-group
         selected-class="text-primary"
@@ -12,15 +11,16 @@
   <v-chip>Malayalam</v-chip>
 </v-chip-group> -->
     
-    <div class="d-flex flex-wrap">
-    <div v-for="bookList in bookLists" :key="bookList.id" class="mx-3 my-3">
+    <div class="d-flex flex-wrap justify-content-center gap-5 py-5">
+    <div v-for="bookList in bookLists" :key="bookList.id" class="">
        
     <v-card
       class="mx-auto pb-3"
       width="200"
+      rounded="2"
     >
       <v-img
-        :aspect-ratio="1/1.5"
+        :aspect-ratio="1"
         :src="'data:image/jpeg;base64,' + bookList.image"
         cover
       ></v-img>
@@ -42,8 +42,7 @@
 </div>
 </div>
 </div>
-</v-container>
-</v-main>
+
   </template>
 
 <script>

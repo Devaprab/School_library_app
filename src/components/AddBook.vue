@@ -4,7 +4,7 @@
       <v-snackbar v-model="snackbar" :color="color" :timeout="timeout" location="bottom">
       <div class="text-center">{{ message }}</div>
     </v-snackbar>
-    <div class="container added-books ms-5 mb-2 me-5">
+    <div class="container added-books mx-auto ms-4">
             <h3 class="text mb-5 mt-4 text-center" style="font-size: 24px;">Add Book</h3>  
             <form @submit.prevent="submitForm" enctype="multipart/form-data">
           <div class="form-group">
@@ -177,7 +177,7 @@ console.log('reader', reader)
 
 .added-books {
   margin-top: 40px;
-  width: 1100px;
+  width: 100%;
   height: 600px;
   background-color: #fdfdfd;
   border: 3px solid #66BB6A;
